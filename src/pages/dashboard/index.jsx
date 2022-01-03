@@ -5,10 +5,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuWhiteIcon from "../../assets/svg/menu-white-icon.svg";
@@ -61,6 +58,7 @@ const mdTheme = createTheme();
 function DashboardContent() {
 	const [open, setOpen] = useState(false);
 	const toggleDrawer = () => {
+		console.log('working')
 		setOpen(!open);
 	};
 
@@ -69,7 +67,7 @@ function DashboardContent() {
 			<Box sx={{ display: "flex" }}>
 				<CssBaseline />
 				<Appbar open={open} setOpen={toggleDrawer} />
-				<Box sx={{ display: { xs: "none", md: "flex" } }}>
+				<Box sx={{ display: { xs: open ? "flex" : "none", md: "flex" } }}>
 					<Drawer variant="permanent" open={open}>
 						<Toolbar
 							sx={{
@@ -77,14 +75,20 @@ function DashboardContent() {
 								alignItems: "center",
 								justifyContent: "flex-end",
 								px: [1],
-							}}>
-							<IconButton onClick={toggleDrawer}>
-								<ChevronLeftIcon />
-							</IconButton>
+							}}
+						>
 						</Toolbar>
-						<IconContainer>
+						
+						<Box
+							sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}
+
+						>
+						<IconContainer
+							 onClick={toggleDrawer}
+						>
 							<Image src={MenuWhiteIcon} height="25" width="25" />
-						</IconContainer>
+							</IconContainer>
+							</Box>
 						<IconContainer>
 							<HomeIcon sx={{ color: "#fff" }} />
 						</IconContainer>

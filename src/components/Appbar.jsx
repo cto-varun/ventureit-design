@@ -52,7 +52,7 @@ export default function Appbar(props) {
 								edge="start"
 								aria-label="open drawer"
 								onClick={() => {
-									setOpen();
+									setOpen()
 								}}>
 								{/* <MenuIcon /> */}
 								<LogoImg src={MenuIcon} height="30" width="30" />
